@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Card Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+        <hand :current-cards="currentCards"></hand>
+        <button @click="shuffleDeck">Shuffle</button>
+        <button @click="drawFiveCards">Draw</button>
+        <button @click="reset">Reset</button>
+    </div>
+
+
+    <script type="text/x-template" id="card-template">
+        <li>
+            <div>
+                <span>{{card.value}}</span>
+                <span>{{card.suit}}</span>
+            </div>
+            
+        </li>
+    </script>
+
+    <script type="text/x-template" id="hand-template">
+        <div>
+            <ul v-if="currentCards != null">
+                
+               <card v-for="card in currentCards"
+                    :card="card"
+                    :key="card.id"
+               >
+                   
+               </card> 
+            </ul>
+        </div>
+    </script>
+    
+
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
