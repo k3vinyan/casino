@@ -6,40 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Card Game</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div id="app">
-        
         <hand :current-cards="currentCards"></hand>
-        <button @click="shuffleDeck">Shuffle</button>
-        <button @click="drawFiveCards">Draw</button>
-        <button @click="reset">Reset</button>
+        <custom-button @click.native="shuffleDeck" value="Shuffle"></custom-button>
+        <custom-button @click.native="drawFiveCards" value="Draw"></custom-button>
+        <custom-button @click.native="reset" value="reset"></custom-button>
     </div>
 
 
     <script type="text/x-template" id="card-template">
-        <li>
-            <div>
-                <span>{{card.value}}</span>
-                <span>{{card.suit}}</span>
-            </div>
-            
-        </li>
+        <div class="card">
+            <span>{{card.value}}</span>
+            <span>{{card.suit}}</span>
+        </div>
     </script>
 
     <script type="text/x-template" id="hand-template">
-        <div>
-            <ul v-if="currentCards != null">
-                
-               <card v-for="card in currentCards"
+        <div class="hand">
+                <card 
+                    v-for="card in currentCards"
                     :card="card"
                     :key="card.id"
-               >
-                   
-               </card> 
-            </ul>
+                >       
+                </card>  
         </div>
     </script>
+
+    <script type="text/x-template" id="button-template">
+        <button>{{value}}</button>
+    </script>
+
     
 
 

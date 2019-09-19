@@ -3,8 +3,6 @@ import DeckOfCards from './DeckOfCards.js';
 
 const deck = new DeckOfCards();
 deck.createDeck()
-deck.shuffle();
-
 
 const CardComponent = {
     template: "#card-template",
@@ -13,6 +11,13 @@ const CardComponent = {
             value: String,
             suit: String
         }
+    }
+}
+
+const ButtonComponent = {
+    template: '#button-template',
+    props: {
+        value: String
     }
 }
 
@@ -30,7 +35,8 @@ const HandComponent = {
 const app = new Vue({
     el: '#app',
     components: {
-        hand: HandComponent
+        hand: HandComponent,
+        'custom-button': ButtonComponent
     },
     data: {
         deck: deck,
@@ -38,7 +44,6 @@ const app = new Vue({
     },
     methods: {
         shuffleDeck: function() {
-            console.log(this.deck.deck)
             this.deck.shuffle()
         },
         drawFiveCards: function() {
