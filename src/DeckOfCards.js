@@ -34,9 +34,6 @@ export default class DeckOfCards {
 
     drawFiveCards() {
         const fiveCards = this.deck.splice(0, 5);
-        if(this.deck.length < 5) {
-            alert("there are less than 5 cards remaining.  Please reset")
-        }
         return fiveCards;
     }
 
